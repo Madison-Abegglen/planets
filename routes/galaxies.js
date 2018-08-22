@@ -22,7 +22,7 @@ router.get('/:id', (req, res, next) => {
 // create one
 router.post('/', (req, res, next) => {
     Galaxies.create(req.body)
-        .then(galaxy => req.send(galaxy))
+        .then(galaxy => res.send(galaxy))
         .catch(next)
 })
 

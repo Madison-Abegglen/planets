@@ -1,11 +1,11 @@
 let router = require('express').Router()
-let Galaxies = require('../models/galaxy')
+let Planets = require('../models/planet')
 
 // get all 
 router.get('/', (req, res, next) => {
-    Galaxies.find({})
-        .then(galaxies => {
-            return res.send(galaxies)
+    Planets.find({})
+        .then(planets => {
+            return res.send(planets)
         })
         .catch(err => {
             return next(err)
@@ -14,32 +14,32 @@ router.get('/', (req, res, next) => {
 
 // get one 
 router.get('/:id', (req, res, next) => {
-    Galaxies.findById(req.params.id)
-        .then(galaxy => res.send(galaxy))
+    Planets.findById(req.params.id)
+        .then(planet => res.send(planet))
         .catch(next)
 })
 
-// create one
+// create one 
 router.post('/', (req, res, next) => {
-    Galaxies.create(req.body)
-        .then(galaxy => req.send(galaxy))
+    Planets.create(req.body)
+        .then(planet => req.send(planet))
         .catch(next)
 })
 
-// edit one 
+// edit one
 router.put('/:id', (req, res, next) => {
-    Galaxies.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    Planets.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(() => res.send({
             message: 'Success'
         }))
         .catch(next)
 })
 
-// delete one 
+// delete one
 router.delete('/:id', (req, res, next) => {
-    Galaxies.findByIdAndRemove(req.params.id)
+    Planets.findByIdAndRemove(req.params.id)
         .then(() => res.send({
-            message: 'Successfully removed galaxy'
+            message: 'Successfully removed planet'
         }))
         .catch(next)
 })

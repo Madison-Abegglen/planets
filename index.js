@@ -10,7 +10,9 @@ server.use(bp.urlencoded({
 }))
 
 let galaxyRoutes = require('./routes/galaxies')
+let starRoutes = require('./routes/stars')
 
+server.use('/api/stars', starRoutes)
 server.use('/api/galaxies', galaxyRoutes)
 
 server.use('/api/*', (error, req, res, next) => {
@@ -18,10 +20,8 @@ server.use('/api/*', (error, req, res, next) => {
 })
 
 server.use('*', (req, res, next) => {
-    res.status(400).send('<h1>NO PAGE FOUND.</h1>')
+    res.status(400).send('<h1>NO PAGE FOUND</h1>')
 })
-
-
 
 server.listen(port, () => {
     console.log('SPACE....', port)

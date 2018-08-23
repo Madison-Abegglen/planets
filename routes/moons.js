@@ -20,7 +20,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 // create one 
-router.post('/:id', (req, res, next) => {
+router.post('/', (req, res, next) => {
     Moons.create(req.body)
         .then(moon => res.send(moon))
         .catch(next)
